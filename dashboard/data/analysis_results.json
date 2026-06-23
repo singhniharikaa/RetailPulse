@@ -1,0 +1,338 @@
+{
+  "kpis": {
+    "total_revenue": 14839467.17,
+    "total_profit": 3319242.5,
+    "total_transactions": 2809,
+    "avg_order_value": 5282.83,
+    "overall_margin": 22.4,
+    "total_products": 50
+  },
+  "category_performance": [
+    {
+      "category": "Electronics",
+      "revenue": 9584875.98,
+      "profit": 1655446.94,
+      "transactions": 707,
+      "avg_price": 8692.18,
+      "margin": 17.3
+    },
+    {
+      "category": "Clothing",
+      "revenue": 1781459.96,
+      "profit": 646057.11,
+      "transactions": 614,
+      "avg_price": 1892.13,
+      "margin": 36.3
+    },
+    {
+      "category": "Sports & Fitness",
+      "revenue": 1569438.26,
+      "profit": 408938.83,
+      "transactions": 385,
+      "avg_price": 2559.13,
+      "margin": 26.1
+    },
+    {
+      "category": "Home & Kitchen",
+      "revenue": 1268781.16,
+      "profit": 397475.6,
+      "transactions": 493,
+      "avg_price": 1615.35,
+      "margin": 31.3
+    },
+    {
+      "category": "Beauty & Personal Care",
+      "revenue": 430958.26,
+      "profit": 193136.0,
+      "transactions": 336,
+      "avg_price": 821.37,
+      "margin": 44.8
+    },
+    {
+      "category": "Books & Stationery",
+      "revenue": 203953.54,
+      "profit": 18188.01,
+      "transactions": 274,
+      "avg_price": 469.73,
+      "margin": 8.9
+    }
+  ],
+  "top_products": [
+    {
+      "product_name": "Power Bank 20000mAh",
+      "revenue": 1291123.54,
+      "quantity": 151,
+      "profit": 238790.77
+    },
+    {
+      "product_name": "Mechanical Keyboard",
+      "revenue": 1237612.72,
+      "quantity": 151,
+      "profit": 201773.24
+    },
+    {
+      "product_name": "Webcam HD",
+      "revenue": 1074760.0,
+      "quantity": 125,
+      "profit": 200530.46
+    },
+    {
+      "product_name": "Gaming Mouse",
+      "revenue": 921089.98,
+      "quantity": 123,
+      "profit": 159285.94
+    },
+    {
+      "product_name": "Smart Watch",
+      "revenue": 881121.0,
+      "quantity": 111,
+      "profit": 181070.78
+    },
+    {
+      "product_name": "USB-C Hub",
+      "revenue": 873592.14,
+      "quantity": 116,
+      "profit": 134752.4
+    },
+    {
+      "product_name": "Wireless Earbuds",
+      "revenue": 860264.84,
+      "quantity": 101,
+      "profit": 149081.43
+    },
+    {
+      "product_name": "Portable Monitor",
+      "revenue": 818726.96,
+      "quantity": 95,
+      "profit": 122963.19
+    },
+    {
+      "product_name": "Phone Stand",
+      "revenue": 816477.66,
+      "quantity": 99,
+      "profit": 117903.53
+    },
+    {
+      "product_name": "Bluetooth Speaker",
+      "revenue": 810107.13,
+      "quantity": 97,
+      "profit": 149295.19
+    }
+  ],
+  "monthly_trend": [
+    {
+      "month": 1,
+      "revenue": 1227941.11,
+      "transactions": 231,
+      "profit": 256434.94
+    },
+    {
+      "month": 2,
+      "revenue": 671295.57,
+      "transactions": 154,
+      "profit": 156714.26
+    },
+    {
+      "month": 3,
+      "revenue": 1110641.02,
+      "transactions": 205,
+      "profit": 231741.77
+    },
+    {
+      "month": 4,
+      "revenue": 868671.5,
+      "transactions": 193,
+      "profit": 216898.39
+    },
+    {
+      "month": 5,
+      "revenue": 1156662.66,
+      "transactions": 218,
+      "profit": 243578.19
+    },
+    {
+      "month": 6,
+      "revenue": 1248511.96,
+      "transactions": 227,
+      "profit": 294896.3
+    },
+    {
+      "month": 7,
+      "revenue": 1245130.72,
+      "transactions": 219,
+      "profit": 251087.61
+    },
+    {
+      "month": 8,
+      "revenue": 952331.45,
+      "transactions": 182,
+      "profit": 240109.2
+    },
+    {
+      "month": 9,
+      "revenue": 1425716.89,
+      "transactions": 215,
+      "profit": 338765.38
+    },
+    {
+      "month": 10,
+      "revenue": 1891486.31,
+      "transactions": 344,
+      "profit": 431185.43
+    },
+    {
+      "month": 11,
+      "revenue": 1570346.35,
+      "transactions": 326,
+      "profit": 329076.06
+    },
+    {
+      "month": 12,
+      "revenue": 1470731.65,
+      "transactions": 295,
+      "profit": 328754.99
+    }
+  ],
+  "profit_margins": [
+    {
+      "category": "Beauty & Personal Care",
+      "revenue": 430958.2575,
+      "profit": 193135.9975,
+      "margin": 44.8
+    },
+    {
+      "category": "Clothing",
+      "revenue": 1781459.964,
+      "profit": 646057.114,
+      "margin": 36.3
+    },
+    {
+      "category": "Home & Kitchen",
+      "revenue": 1268781.162,
+      "profit": 397475.602,
+      "margin": 31.3
+    },
+    {
+      "category": "Sports & Fitness",
+      "revenue": 1569438.2635,
+      "profit": 408938.8335,
+      "margin": 26.1
+    },
+    {
+      "category": "Electronics",
+      "revenue": 9584875.9795,
+      "profit": 1655446.9395,
+      "margin": 17.3
+    },
+    {
+      "category": "Books & Stationery",
+      "revenue": 203953.544,
+      "profit": 18188.014,
+      "margin": 8.9
+    }
+  ],
+  "monthly_growth": [
+    {
+      "month": 1,
+      "growth_rate": 0.0
+    },
+    {
+      "month": 2,
+      "growth_rate": -45.3
+    },
+    {
+      "month": 3,
+      "growth_rate": 65.4
+    },
+    {
+      "month": 4,
+      "growth_rate": -21.8
+    },
+    {
+      "month": 5,
+      "growth_rate": 33.2
+    },
+    {
+      "month": 6,
+      "growth_rate": 7.9
+    },
+    {
+      "month": 7,
+      "growth_rate": -0.3
+    },
+    {
+      "month": 8,
+      "growth_rate": -23.5
+    },
+    {
+      "month": 9,
+      "growth_rate": 49.7
+    },
+    {
+      "month": 10,
+      "growth_rate": 32.7
+    },
+    {
+      "month": 11,
+      "growth_rate": -17.0
+    },
+    {
+      "month": 12,
+      "growth_rate": -6.3
+    }
+  ],
+  "loss_making_products": [],
+  "region_performance": [
+    {
+      "region": "North",
+      "revenue": 4602013.34,
+      "transactions": 853,
+      "profit": 983810.04
+    },
+    {
+      "region": "South",
+      "revenue": 4202117.37,
+      "transactions": 807,
+      "profit": 981544.86
+    },
+    {
+      "region": "West",
+      "revenue": 3262426.61,
+      "transactions": 620,
+      "profit": 707181.62
+    },
+    {
+      "region": "East",
+      "revenue": 2772909.85,
+      "transactions": 529,
+      "profit": 646705.98
+    }
+  ],
+  "insights": [
+    {
+      "icon": "👑",
+      "title": "Top Revenue Category",
+      "text": "Electronics leads with ₹9,584,876 in revenue"
+    },
+    {
+      "icon": "🏆",
+      "title": "Best Selling Product",
+      "text": "Power Bank 20000mAh generated ₹1,291,124 revenue"
+    },
+    {
+      "icon": "📈",
+      "title": "Peak Sales Month",
+      "text": "October recorded highest sales of ₹1,891,486"
+    },
+    {
+      "icon": "💰",
+      "title": "Profit Margin",
+      "text": "Overall profit margin stands at 22.4%"
+    },
+    {
+      "icon": "🛒",
+      "title": "Average Order Value",
+      "text": "Customers spend an average of ₹5,283 per transaction"
+    }
+  ]
+}
