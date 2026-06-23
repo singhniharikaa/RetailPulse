@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Retail Sales Performance Dashboard - Analyze revenue, profits, category performance, and business insights using Python, NumPy, Pandas & Matplotlib">
+    <title>RetailPulse - Sales Performance Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <header class="header">
+            <div class="header-badge">
+                <span class="dot"></span>
+                Live Analysis &bull; 2024 Dataset
+            </div>
+            <h1>Retail<span>Pulse</span></h1>
+            <p>Sales performance analysis of 2,800+ transactions across 6 categories, powered by Python, NumPy & Pandas</p>
+            <nav class="nav-pills">
+                <a href="#kpis" class="nav-pill active">Overview</a>
+                <a href="#trends" class="nav-pill">Trends</a>
+                <a href="#categories" class="nav-pill">Categories</a>
+                <a href="#products" class="nav-pill">Products</a>
+                <a href="#profits" class="nav-pill">Profits</a>
+                <a href="#insights" class="nav-pill">Insights</a>
+            </nav>
+        </header>
+
+        <section id="kpis">
+            <div class="section-title">
+                <span class="icon">📋</span>
+                Key Performance Indicators
+            </div>
+            <div class="kpi-grid" id="kpi-container"></div>
+        </section>
+
+        <section id="trends" class="fade-in">
+            <div class="section-title">
+                <span class="icon">📈</span>
+                Monthly Sales Trend
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Revenue Over Time (Jan - Dec 2024)</span>
+                    <span class="card-badge">12 Months</span>
+                </div>
+                <img src="../analysis/output/charts/monthly_sales_trend.png" alt="Monthly Sales Trend" class="chart-img" id="trend-chart">
+            </div>
+        </section>
+
+        <section id="growth" class="fade-in">
+            <div class="section-title">
+                <span class="icon">🚀</span>
+                Month-over-Month Growth
+            </div>
+            <div class="chart-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Growth Rate (%)</span>
+                        <span class="card-badge">MoM</span>
+                    </div>
+                    <img src="../analysis/output/charts/monthly_growth_rate.png" alt="Monthly Growth Rate" class="chart-img">
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Revenue by Region</span>
+                        <span class="card-badge">4 Regions</span>
+                    </div>
+                    <img src="../analysis/output/charts/region_performance.png" alt="Region Performance" class="chart-img">
+                </div>
+            </div>
+        </section>
+
+        <section id="categories" class="fade-in">
+            <div class="section-title">
+                <span class="icon">🏷️</span>
+                Category Performance
+            </div>
+            <div class="chart-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Revenue by Category</span>
+                        <span class="card-badge" id="cat-count">6 Categories</span>
+                    </div>
+                    <img src="../analysis/output/charts/category_revenue.png" alt="Category Revenue" class="chart-img">
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Category Breakdown</span>
+                        <span class="card-badge">Details</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="category-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Revenue</th>
+                                    <th>Profit</th>
+                                    <th>Margin</th>
+                                    <th>Orders</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="fade-in">
+            <div class="section-title">
+                <span class="icon">🏆</span>
+                Top 10 Products
+            </div>
+            <div class="chart-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Best Sellers by Revenue</span>
+                        <span class="card-badge">Top 10</span>
+                    </div>
+                    <img src="../analysis/output/charts/top10_products.png" alt="Top 10 Products" class="chart-img">
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Product Rankings</span>
+                        <span class="card-badge">Detailed</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Product</th>
+                                    <th>Revenue</th>
+                                    <th>Qty Sold</th>
+                                    <th>Profit</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profits" class="fade-in">
+            <div class="section-title">
+                <span class="icon">💰</span>
+                Profit Analysis
+            </div>
+            <div class="card full-width" style="margin-bottom: 20px;">
+                <div class="card-header">
+                    <span class="card-title">Revenue Share & Profit Margins</span>
+                    <span class="card-badge">By Category</span>
+                </div>
+                <img src="../analysis/output/charts/profit_margins.png" alt="Profit Margins" class="chart-img">
+            </div>
+
+            <div class="section-title" id="loss-section" style="display: none;">
+                <span class="icon">⚠️</span>
+                Loss-Making Products
+            </div>
+            <div id="loss-container" style="display: none;">
+                <div class="chart-grid">
+                    <div class="card loss-alert">
+                        <div class="card-header">
+                            <span class="card-title" style="color: var(--accent-red);">Products Running at Loss</span>
+                            <span class="card-badge" style="background: var(--accent-red-light); color: var(--accent-red);" id="loss-count">0</span>
+                        </div>
+                        <img src="../analysis/output/charts/loss_making_products.png" alt="Loss Making Products" class="chart-img" id="loss-chart">
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Loss Details</span>
+                            <span class="card-badge" style="background: var(--accent-red-light); color: var(--accent-red);">Alert</span>
+                        </div>
+                        <div class="table-wrapper">
+                            <table id="loss-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Revenue</th>
+                                        <th>Loss</th>
+                                        <th>Qty Sold</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="insights" class="fade-in">
+            <div class="section-title">
+                <span class="icon">💡</span>
+                Business Insights
+            </div>
+            <div class="insights-grid" id="insights-container"></div>
+        </section>
+
+        <footer class="footer">
+            <p>Built with Python, NumPy, Pandas & Matplotlib</p>
+            <p style="margin-top: 6px;">by <a href="https://github.com/singhniharikaa" target="_blank">Niharika Singh</a></p>
+            <div class="footer-tech">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">NumPy</span>
+                <span class="tech-pill">Pandas</span>
+                <span class="tech-pill">Matplotlib</span>
+                <span class="tech-pill">HTML/CSS/JS</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
