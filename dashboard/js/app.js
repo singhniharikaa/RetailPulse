@@ -70,7 +70,7 @@ function renderKPIs(kpis) {
         <div class="kpi-card" style="animation-delay: ${i * 0.1}s">
             <div class="kpi-label">${card.label}</div>
             <div class="kpi-value" id="kpi-${i}">-</div>
-            <div class="kpi-sub">2024 Annual Data</div>
+            <div class="kpi-sub">2026 Annual Data</div>
         </div>
     `).join('');
 

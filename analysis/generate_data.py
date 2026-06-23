@@ -77,7 +77,7 @@ def generate_retail_data():
                                          p=[0.30, 0.15, 0.10, 0.15, 0.12, 0.08, 0.06, 0.04])
 
             day = np.random.randint(1, 29)
-            date = f'2024-{month:02d}-{day:02d}'
+            date = f'2026-{month:02d}-{day:02d}'
 
             region = np.random.choice(regions, p=[0.30, 0.28, 0.20, 0.22])
             payment = np.random.choice(payment_methods, p=[0.35, 0.25, 0.15, 0.15, 0.10])

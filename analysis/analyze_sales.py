@@ -156,7 +156,7 @@ def analyze_monthly_trend(df):
                 fontsize=9, fontweight='bold', color=PRIMARY_DARK,
                 arrowprops=dict(arrowstyle='->', color=PRIMARY_DARK, lw=1.5))
 
-    ax.set_title('Monthly Sales Trend (2024)', color=TEXT_DARK, pad=15)
+    ax.set_title('Monthly Sales Trend (2026)', color=TEXT_DARK, pad=15)
     ax.set_xlabel('Month', color=TEXT_MID)
     ax.set_ylabel('Revenue (₹)', color=TEXT_MID)
     ax.set_xticks(range(1, 13))

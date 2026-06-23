@@ -106,21 +106,19 @@ body {
 }
 
 .header h1 {
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: var(--text-primary);
+    font-size: 4.2rem;
+    font-weight: 900;
+    color: #1a0a3e;
     letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin-bottom: 12px;
+    line-height: 1.1;
+    margin-bottom: 14px;
     position: relative;
     z-index: 1;
+    text-shadow: 0 2px 8px rgba(26, 10, 62, 0.15);
 }
 
 .header h1 span {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #2d0a6e;
 }
 
 .header p {
