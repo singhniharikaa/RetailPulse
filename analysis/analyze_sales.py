@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import json
 import os
+import shutil
 from generate_data import generate_retail_data
 
 BG_COLOR = '#F0EEF6'
@@ -408,6 +409,12 @@ def main():
     print(f"  Charts saved to: {CHARTS_DIR}")
     print(f"  Results JSON: {json_path}")
     print(f"  Dashboard JSON: {dashboard_json_path}")
+
+    dashboard_data_dir = os.path.dirname(dashboard_json_path)
+    for chart_file in os.listdir(CHARTS_DIR):
+        if chart_file.endswith('.png'):
+            shutil.copy2(os.path.join(CHARTS_DIR, chart_file), dashboard_data_dir)
+    print(f"  Charts copied to dashboard")
 
 
 if __name__ == '__main__':
