@@ -92,15 +92,18 @@
                         <span class="card-title">Category Breakdown</span>
                         <span class="card-badge">Details</span>
                     </div>
+                    <div class="search-box">
+                        <input type="text" id="category-search" placeholder="Filter categories..." class="search-input">
+                    </div>
                     <div class="table-wrapper">
                         <table id="category-table">
                             <thead>
                                 <tr>
-                                    <th>Category</th>
-                                    <th>Revenue</th>
-                                    <th>Profit</th>
-                                    <th>Margin</th>
-                                    <th>Orders</th>
+                                    <th class="sortable" data-table="category" data-sort="category">Category <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="category" data-sort="revenue">Revenue <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="category" data-sort="profit">Profit <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="category" data-sort="margin">Margin <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="category" data-sort="transactions">Orders <span class="sort-icon"></span></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -128,15 +131,18 @@
                         <span class="card-title">Product Rankings</span>
                         <span class="card-badge">Detailed</span>
                     </div>
+                    <div class="search-box">
+                        <input type="text" id="products-search" placeholder="Search products..." class="search-input">
+                    </div>
                     <div class="table-wrapper">
                         <table id="products-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Product</th>
-                                    <th>Revenue</th>
-                                    <th>Qty Sold</th>
-                                    <th>Profit</th>
+                                    <th class="sortable" data-table="products" data-sort="product_name">Product <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="products" data-sort="revenue">Revenue <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="products" data-sort="quantity">Qty Sold <span class="sort-icon"></span></th>
+                                    <th class="sortable" data-table="products" data-sort="profit">Profit <span class="sort-icon"></span></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -177,14 +183,17 @@
                             <span class="card-title">Loss Details</span>
                             <span class="card-badge" style="background: var(--accent-red-light); color: var(--accent-red);">Alert</span>
                         </div>
+                        <div class="search-box">
+                            <input type="text" id="loss-search" placeholder="Search loss-making products..." class="search-input">
+                        </div>
                         <div class="table-wrapper">
                             <table id="loss-table">
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Revenue</th>
-                                        <th>Loss</th>
-                                        <th>Qty Sold</th>
+                                        <th class="sortable" data-table="loss" data-sort="product_name">Product <span class="sort-icon"></span></th>
+                                        <th class="sortable" data-table="loss" data-sort="revenue">Revenue <span class="sort-icon"></span></th>
+                                        <th class="sortable" data-table="loss" data-sort="profit">Loss <span class="sort-icon"></span></th>
+                                        <th class="sortable" data-table="loss" data-sort="quantity">Qty Sold <span class="sort-icon"></span></th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

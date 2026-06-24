@@ -1,14 +1,48 @@
+let state = {
+    category: {
+        data: [],
+        filtered: [],
+        sortCol: null,
+        sortAsc: true,
+        searchQuery: ''
+    },
+    products: {
+        data: [],
+        filtered: [],
+        sortCol: null,
+        sortAsc: true,
+        searchQuery: ''
+    },
+    loss: {
+        data: [],
+        filtered: [],
+        sortCol: null,
+        sortAsc: true,
+        searchQuery: ''
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     fetch('data/analysis_results.json')
         .then(res => res.json())
         .then(data => {
+            state.category.data = data.category_performance || [];
+            state.category.filtered = [...state.category.data];
+
+            state.products.data = data.top_products || [];
+            state.products.filtered = [...state.products.data];
+
+            state.loss.data = data.loss_making_products || [];
+            state.loss.filtered = [...state.loss.data];
+
             renderKPIs(data.kpis);
-            renderCategoryTable(data.category_performance);
-            renderProductsTable(data.top_products);
-            renderLossSection(data.loss_making_products);
+            renderCategoryTable();
+            renderProductsTable();
+            renderLossSection();
             renderInsights(data.insights);
             initScrollAnimations();
             initNavPills();
+            initSearchAndSort();
         })
         .catch(() => {
             document.getElementById('kpi-container').innerHTML =
@@ -82,8 +116,13 @@ function renderKPIs(kpis) {
     }, 300);
 }
 
-function renderCategoryTable(categories) {
+function renderCategoryTable() {
     const tbody = document.querySelector('#category-table tbody');
+    const categories = state.category.filtered;
+    if (categories.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">No categories match search criteria</td></tr>';
+        return;
+    }
     tbody.innerHTML = categories.map(cat => `
         <tr>
             <td style="font-weight: 600; color: var(--text-primary)">${cat.category}</td>
@@ -95,13 +134,19 @@ function renderCategoryTable(categories) {
     `).join('');
 }
 
-function renderProductsTable(products) {
+function renderProductsTable() {
     const tbody = document.querySelector('#products-table tbody');
-    tbody.innerHTML = products.map((p, i) => {
-        let rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-default';
+    const products = state.products.filtered;
+    if (products.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">No products match search criteria</td></tr>';
+        return;
+    }
+    tbody.innerHTML = products.map(p => {
+        let originalRank = state.products.data.findIndex(orig => orig.product_name === p.product_name) + 1;
+        let rankClass = originalRank === 1 ? 'rank-1' : originalRank === 2 ? 'rank-2' : originalRank === 3 ? 'rank-3' : 'rank-default';
         return `
         <tr>
-            <td><span class="rank-badge ${rankClass}">${i + 1}</span></td>
+            <td><span class="rank-badge ${rankClass}">${originalRank}</span></td>
             <td style="font-weight: 600; color: var(--text-primary)">${p.product_name}</td>
             <td>${formatCurrency(p.revenue)}</td>
             <td>${formatNumber(p.quantity)}</td>
@@ -111,14 +156,19 @@ function renderProductsTable(products) {
     }).join('');
 }
 
-function renderLossSection(lossProducts) {
-    if (!lossProducts || lossProducts.length === 0) return;
+function renderLossSection() {
+    const lossProducts = state.loss.filtered;
+    if (!state.loss.data || state.loss.data.length === 0) return;
 
     document.getElementById('loss-section').style.display = 'flex';
     document.getElementById('loss-container').style.display = 'block';
     document.getElementById('loss-count').textContent = lossProducts.length + ' Products';
 
     const tbody = document.querySelector('#loss-table tbody');
+    if (lossProducts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 20px;">No products match search criteria</td></tr>';
+        return;
+    }
     tbody.innerHTML = lossProducts.map(p => `
         <tr>
             <td style="font-weight: 600; color: var(--text-primary)">${p.product_name}</td>
@@ -173,3 +223,84 @@ function initNavPills() {
 
     sections.forEach(sec => observer.observe(sec));
 }
+
+function initSearchAndSort() {
+    setupSearch('category-search', 'category', renderCategoryTable);
+    setupSearch('products-search', 'products', renderProductsTable);
+    setupSearch('loss-search', 'loss', renderLossSection);
+
+    document.querySelectorAll('th.sortable').forEach(th => {
+        th.addEventListener('click', () => {
+            const tableName = th.dataset.table;
+            const columnName = th.dataset.sort;
+            handleSort(tableName, columnName, th);
+        });
+    });
+}
+
+function setupSearch(inputId, tableKey, renderFunc) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    input.addEventListener('input', (e) => {
+        state[tableKey].searchQuery = e.target.value.toLowerCase().trim();
+        applyFilterAndSort(tableKey);
+        renderFunc();
+    });
+}
+
+function handleSort(tableName, columnName, thElement) {
+    const tableState = state[tableName];
+    if (tableState.sortCol === columnName) {
+        tableState.sortAsc = !tableState.sortAsc;
+    } else {
+        tableState.sortCol = columnName;
+        tableState.sortAsc = true;
+    }
+
+    const headerRow = thElement.parentElement;
+    headerRow.querySelectorAll('th.sortable').forEach(th => {
+        if (th !== thElement) {
+            th.classList.remove('asc', 'desc');
+        }
+    });
+
+    thElement.classList.remove('asc', 'desc');
+    thElement.classList.add(tableState.sortAsc ? 'asc' : 'desc');
+
+    applyFilterAndSort(tableName);
+
+    if (tableName === 'category') renderCategoryTable();
+    else if (tableName === 'products') renderProductsTable();
+    else if (tableName === 'loss') renderLossSection();
+}
+
+function applyFilterAndSort(tableKey) {
+    const tableState = state[tableKey];
+    let result = [...tableState.data];
+
+    if (tableState.searchQuery) {
+        const query = tableState.searchQuery;
+        if (tableKey === 'category') {
+            result = result.filter(item => item.category.toLowerCase().includes(query));
+        } else if (tableKey === 'products' || tableKey === 'loss') {
+            result = result.filter(item => item.product_name.toLowerCase().includes(query));
+        }
+    }
+
+    if (tableState.sortCol) {
+        const col = tableState.sortCol;
+        const asc = tableState.sortAsc;
+        result.sort((a, b) => {
+            let valA = a[col];
+            let valB = b[col];
+            if (typeof valA === 'string') {
+                return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            } else {
+                return asc ? valA - valB : valB - valA;
+            }
+        });
+    }
+
+    tableState.filtered = result;
+}
+
